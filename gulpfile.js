@@ -28,10 +28,10 @@ gulp.task('inject-dependencies', function(){
     return gulp.src('index.tpl.html')
         .pipe(inject(
             gulp.src(bower({paths:'.'}), {read: false}),
-            {name: 'bower', relative: true, addPrefix: '../'}))
+            {name: 'bower', relative: true, addPrefix: '..'}))
         .pipe(inject(
             gulp.src('dist/src/**/*.js', {read: false}),
-            {relative: true, addPrefix: '..'}
+            {relative: true}
         ))
         .pipe(rename("index.html"))
         .pipe(gulp.dest('public/'));
