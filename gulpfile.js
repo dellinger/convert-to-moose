@@ -16,11 +16,11 @@ gulp.task('build', function(callback) {
 gulp.task('typescript', function () {
     var tsProject = ts.createProject('tsconfig.json');
     var tsResult = tsProject.src().pipe(ts(tsProject));
-    return tsResult.js.pipe(gulp.dest('dist'));
+    return tsResult.js.pipe(gulp.dest('public'));
 });
 
 gulp.task('clean', function(){
-    return gulp.src('dist/', {read:false})
+    return gulp.src('public/', {read:false})
         .pipe(clean());
 });
 
@@ -28,12 +28,12 @@ gulp.task('inject-dependencies', function(){
     return gulp.src('index.tpl.html')
         .pipe(inject(
             gulp.src(bower({paths:'.'}), {read: false}),
-            {name: 'bower', relative: true}))
+            {name: 'bower', relative: true, addPrefix: '../'}))
         .pipe(inject(
             gulp.src('dist/src/**/*.js', {read: false}),
-            {relative: true}
+            {relative: true, addPrefix: '..'}
         ))
         .pipe(rename("index.html"))
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('public/'));
 });
 
