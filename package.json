@@ -10,5 +10,8 @@
   "description": "",
   "devDependencies": {
     "typescript": "^1.7.5"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0"
   }
 }
