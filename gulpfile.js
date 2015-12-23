@@ -5,9 +5,11 @@ var inject = require('gulp-inject');
 var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
+var bower = require('gulp-bower');
 
 gulp.task('build', function(callback) {
    runSequence(
+       'bower',
        'typescript',
        'inject-dependencies',
        callback);
@@ -37,3 +39,6 @@ gulp.task('inject-dependencies', function(){
         .pipe(gulp.dest('public/'));
 });
 
+gulp.task('bower', function(){
+  return bower();
+})
