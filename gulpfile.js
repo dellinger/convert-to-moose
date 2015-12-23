@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
 var bower = require('gulp-bower');
 
+gulp.task('default',['build']);
 gulp.task('build', function(callback) {
    runSequence(
        'bower',
