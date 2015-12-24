@@ -29,11 +29,9 @@ gulp.task('clean', function(){
 
 gulp.task('inject-dependencies', function(){
     return gulp.src('index.tpl.html')
+        .pipe(inject(gulp.src(bower()),{name: 'bower'}))
         .pipe(inject(
-            gulp.src(bower({paths:'.'}), {read: false}),
-            {name: 'bower', relative: true, addPrefix: '..'}))
-        .pipe(inject(
-            gulp.src('dist/src/**/*.js', {read: false}),
+            gulp.src('public/src/**/*.js', {read: false}),
             {relative: true}
         ))
         .pipe(rename("index.html"))
