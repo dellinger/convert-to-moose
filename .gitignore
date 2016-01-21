@@ -11,4 +11,4 @@ node_modules
 .idea_modules/
 /bower_components/**/*
 index.html
-
+*.js
